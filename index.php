@@ -49,19 +49,52 @@ $hotels = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotels</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Hotel list</h1>
+    <h1 class="text-center mt-4">Hotel List</h1>
 
-    <ul>
+    <div class="container">
+
         <?php
-        
+
+
+        echo "<table class='table mt-4'>
+            <thead>
+                <tr>
+                    <th scope='col'>Name</th>
+                    <th scope='col'>Description</th>
+                    <th scope='col'>Parking</th>
+                    <th scope='col'>Vote</th>
+                    <th scope='col'>Distance to center</th>
+                </tr>
+            </thead>
+            <tbody>
+        ";
+
         foreach ($hotels as $hotel) {
+            echo "
+                <tr>
+                    <td>{$hotel['name']}</td>
+                    <td>{$hotel['description']}</td>
+                    <td>{$hotel['parking']}</td>
+                    <td>{$hotel['vote']}</td>
+                    <td>{$hotel['distance_to_center']}</td>
+                </tr>
+            ";
         }
-        
+
+        echo "
+            </tbody>
+        </table>
+        ";
+
         ?>
-    </ul>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
 </body>
 
