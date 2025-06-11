@@ -58,22 +58,25 @@ $hotels = [
 
         <h1 class="text-center mt-4">Hotels List</h1>
 
-        <form class="mt-4" action="./hotels-filtered.php" method="get">
+        <h5 class="mt-4">Filters:</h5>
+        <form class="d-flex flex-row" action="./index.php" method="get">
 
-            <input type="checkbox" name="withParking">
+            <input class="me-2" type="checkbox" name="filterByParking">
+            <label class="me-4" for="filterByParking">Only with parking</label>
 
-            <input type="radio" name="oneStars">
-            <input type="radio" name="twoStars">
-            <input type="radio" name="threeStars">
-            <input type="radio" name="fourStars">
-            <input type="radio" name="fiveStars">
+            <select class="me-4" name="filterByRating">
+                <option value="oneStar">One star</option>
+                <option value="twoStars">Two stars</option>
+                <option value="threeStars">Three stars</option>
+                <option value="fourStars">Four stars</option>
+                <option value="fiveStars">Five stars</option>
+            </select>
 
             <button type="submit">Enter</button>
 
         </form>
 
         <?php
-
 
         echo "<table class='table mt-4'>
             <thead>
