@@ -58,10 +58,10 @@ $hotels = [
 
         <h1 class="text-center mt-4">Hotels List</h1>
 
-        <form action="./hotels-filtered.php" method="get">
+        <form class="mt-4" action="./hotels-filtered.php" method="get">
 
             <input type="checkbox" name="withParking">
-            
+
             <input type="radio" name="oneStars">
             <input type="radio" name="twoStars">
             <input type="radio" name="threeStars">
@@ -94,8 +94,8 @@ $hotels = [
                     <td>{$hotel['name']}</td>
                     <td>{$hotel['description']}</td>
                     <td>" . ($hotel['parking'] ? 'Yes' : 'No') . "</td>
-                    <td>{$hotel['vote']}</td>
-                    <td>{$hotel['distance_to_center']}</td>
+                    <td>{$hotel['vote']}/5</td>
+                    <td>{$hotel['distance_to_center']} Km</td>
                 </tr>
             ";
         }
