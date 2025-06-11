@@ -78,7 +78,7 @@ $hotels = [
                 <tr>
                     <td>{$hotel['name']}</td>
                     <td>{$hotel['description']}</td>
-                    <td>{$hotel['parking']}</td>
+                    <td>" . ($hotel['parking'] ? 'Yes' : 'No') . "</td>
                     <td>{$hotel['vote']}</td>
                     <td>{$hotel['distance_to_center']}</td>
                 </tr>
