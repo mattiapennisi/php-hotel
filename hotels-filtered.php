@@ -4,35 +4,35 @@ $hotels = [
 
     [
         'name' => 'Hotel Belvedere',
-        'description' => 'Hotel Belvedere Description',
+        'description' => 'Hotel Belvedere Descrizione',
         'parking' => true,
         'vote' => 4,
         'distance_to_center' => 10.4
     ],
     [
         'name' => 'Hotel Futuro',
-        'description' => 'Hotel Futuro Description',
+        'description' => 'Hotel Futuro Descrizione',
         'parking' => true,
         'vote' => 2,
         'distance_to_center' => 2
     ],
     [
         'name' => 'Hotel Rivamare',
-        'description' => 'Hotel Rivamare Description',
+        'description' => 'Hotel Rivamare Descrizione',
         'parking' => false,
         'vote' => 1,
         'distance_to_center' => 1
     ],
     [
         'name' => 'Hotel Bellavista',
-        'description' => 'Hotel Bellavista Description',
+        'description' => 'Hotel Bellavista Descrizione',
         'parking' => false,
         'vote' => 5,
         'distance_to_center' => 5.5
     ],
     [
         'name' => 'Hotel Milano',
-        'description' => 'Hotel Milano Description',
+        'description' => 'Hotel Milano Descrizione',
         'parking' => true,
         'vote' => 2,
         'distance_to_center' => 50
@@ -53,24 +53,9 @@ $hotels = [
 </head>
 
 <body>
+    <h1 class="text-center mt-4">Hotel List</h1>
 
     <div class="container">
-
-        <h1 class="text-center mt-4">Hotels List</h1>
-
-        <form action="./hotels-filtered.php" method="get">
-
-            <input type="checkbox" name="withParking">
-            
-            <input type="radio" name="oneStars">
-            <input type="radio" name="twoStars">
-            <input type="radio" name="threeStars">
-            <input type="radio" name="fourStars">
-            <input type="radio" name="fiveStars">
-
-            <button type="submit">Enter</button>
-
-        </form>
 
         <?php
 
