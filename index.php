@@ -57,7 +57,7 @@ $ratingFilterValue = isset($_GET['filterByRating']) ? (int)$_GET['filterByRating
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
 
         <h1 class="text-center mt-4"><a href='./index.php'>Hotels List</a></h1>
 
