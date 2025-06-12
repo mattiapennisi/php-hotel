@@ -61,15 +61,16 @@ $hotels = [
         <h5 class="mt-4">Filters:</h5>
         <form class="d-flex flex-row" action="./index.php" method="get">
 
-            <input class="me-2" type="checkbox" name="filterByParking">
+            <input class="me-2" type="checkbox" name="filterByParking" <?php echo isset($_GET['filterByParking']) ? 'checked' : ''; ?>>
             <label class="me-4" for="filterByParking">Only with parking</label>
 
             <select class="me-4" name="filterByRating">
-                <option value="oneStar">One star</option>
-                <option value="twoStars">Two stars</option>
-                <option value="threeStars">Three stars</option>
-                <option value="fourStars">Four stars</option>
-                <option value="fiveStars">Five stars</option>
+                <option value="1">Filter by rating</option>
+                <option value="1">One star</option>
+                <option value="2">Two stars</option>
+                <option value="3">Three stars</option>
+                <option value="4">Four stars</option>
+                <option value="5">Five stars</option>
             </select>
 
             <button type="submit">Enter</button>
@@ -92,7 +93,18 @@ $hotels = [
         ";
 
         foreach ($hotels as $hotel) {
-            echo "
+            if (isset($_GET['filterByParking']) && $hotel['vote'] >= (int)$_GET['filterByRating']) {
+                echo "
+                    <tr>
+                        <td>{$hotel['name']}</td>
+                        <td>{$hotel['description']}</td>
+                        <td>" . ($hotel['parking'] ? 'Yes' : 'No') . "</td>
+                        <td>{$hotel['vote']}/5</td>
+                        <td>{$hotel['distance_to_center']} Km</td>
+                    </tr>
+                    ";
+            } else if ($hotel['vote'] >= (int)$_GET['filterByRating']) {
+                echo "
                 <tr>
                     <td>{$hotel['name']}</td>
                     <td>{$hotel['description']}</td>
@@ -100,13 +112,16 @@ $hotels = [
                     <td>{$hotel['vote']}/5</td>
                     <td>{$hotel['distance_to_center']} Km</td>
                 </tr>
-            ";
+                ";
+            }
         }
 
         echo "
             </tbody>
         </table>
         ";
+
+        var_dump($_GET);
 
         ?>
 
