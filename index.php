@@ -62,7 +62,7 @@ $ratingFilterValue = isset($_GET['filterByRating']) ? (int)$_GET['filterByRating
         <h1 class="text-center mt-4"><a href='./index.php'>Hotels List</a></h1>
 
         <h5 class="mt-4">Filters:</h5>
-        <form class="d-flex flex-row" action="./index.php" method="get">
+        <form class="d-flex flex-row form-control" action="./index.php" method="get">
 
             <input class="me-2" type="checkbox" name="filterByParking">
             <label class="me-4" for="filterByParking">Only with parking</label>
@@ -76,7 +76,7 @@ $ratingFilterValue = isset($_GET['filterByRating']) ? (int)$_GET['filterByRating
                 <option value="5">Five stars</option>
             </select>
 
-            <button type="submit">Enter</button>
+            <button type="submit" class="btn btn-outline-primary">Enter</button>
 
         </form>
 
