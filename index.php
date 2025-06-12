@@ -40,7 +40,7 @@ $hotels = [
 
 ];
 
-
+$parkingGetQueryExists = isset($_GET['filterByParking']);
 
 ?>
 
@@ -95,7 +95,8 @@ $hotels = [
         ";
 
         foreach ($hotels as $hotel) {
-            if (isset($_GET['filterByParking']) && $hotel['parking'] == true && $hotel['vote'] >= (int)$_GET['filterByRating']) {
+            
+            /* if (isset($_GET['filterByParking']) && $hotel['parking'] == true && $hotel['vote'] >= (int)$_GET['filterByRating']) {
                 echo "
                     <tr>
                         <td>{$hotel['name']}</td>
@@ -115,7 +116,7 @@ $hotels = [
                         <td>{$hotel['distance_to_center']} Km</td>
                     </tr>
                     ";
-            }
+            } */
         }
 
         echo "
@@ -123,6 +124,7 @@ $hotels = [
         </table>
         ";
 
+        var_dump($parkingGetQueryExists);
         var_dump($_GET);
 
         ?>
