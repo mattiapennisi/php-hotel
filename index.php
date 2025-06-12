@@ -65,7 +65,7 @@ $ratingFilterValue = isset($_GET['filterByRating']) ? (int)$_GET['filterByRating
         <form class="d-flex flex-row form-control" action="./index.php" method="get">
 
             <input class="me-2" type="checkbox" name="filterByParking">
-            <label class="me-4" for="filterByParking">Only with parking</label>
+            <label class="me-4 pt-1" for="filterByParking">Only with parking</label>
 
             <select class="me-4" name="filterByRating">
                 <option>Filter by rating</option>
