@@ -41,7 +41,6 @@ $hotels = [
 ];
 
 $parkingGetQueryExists = isset($_GET['filterByParking']);
-$ratingGetQueryExists = isset($_GET['filterByRating']);
 $ratingFilterValue = isset($_GET['filterByRating']) ? (int)$_GET['filterByRating'] : 1;
 
 ?>
