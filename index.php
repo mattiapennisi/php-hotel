@@ -41,6 +41,8 @@ $hotels = [
 ];
 
 $parkingGetQueryExists = isset($_GET['filterByParking']);
+$ratingGetQueryExists = isset($_GET['filterByRating']);
+$ratingFilterValue = isset($_GET['filterByRating']) ? (int)$_GET['filterByRating'] : 1;
 
 ?>
 
@@ -58,16 +60,16 @@ $parkingGetQueryExists = isset($_GET['filterByParking']);
 
     <div class="container">
 
-        <h1 class="text-center mt-4">Hotels List</h1>
+        <h1 class="text-center mt-4"><a href='./index.php'>Hotels List</a></h1>
 
         <h5 class="mt-4">Filters:</h5>
         <form class="d-flex flex-row" action="./index.php" method="get">
 
-            <input class="me-2" type="checkbox" name="filterByParking" <?php echo isset($_GET['filterByParking']) ? 'checked' : ''; ?>>
+            <input class="me-2" type="checkbox" name="filterByParking">
             <label class="me-4" for="filterByParking">Only with parking</label>
 
             <select class="me-4" name="filterByRating">
-                <option value="1">Filter by rating</option>
+                <option>Filter by rating</option>
                 <option value="1">One star</option>
                 <option value="2">Two stars</option>
                 <option value="3">Three stars</option>
@@ -95,8 +97,18 @@ $parkingGetQueryExists = isset($_GET['filterByParking']);
         ";
 
         foreach ($hotels as $hotel) {
-            
-            /* if (isset($_GET['filterByParking']) && $hotel['parking'] == true && $hotel['vote'] >= (int)$_GET['filterByRating']) {
+
+            if ($parkingGetQueryExists && $hotel['parking'] && $hotel['vote'] >= $ratingFilterValue) {
+                echo "
+                    <tr>
+                        <td>{$hotel['name']}</td>
+                        <td>{$hotel['description']}</td>
+                        <td>Yes</td>
+                        <td>{$hotel['vote']}/5</td>
+                        <td>{$hotel['distance_to_center']} Km</td>
+                    </tr>
+                    ";
+            } else if (!$parkingGetQueryExists && $hotel['vote'] >= $ratingFilterValue) {
                 echo "
                     <tr>
                         <td>{$hotel['name']}</td>
@@ -106,26 +118,13 @@ $parkingGetQueryExists = isset($_GET['filterByParking']);
                         <td>{$hotel['distance_to_center']} Km</td>
                     </tr>
                     ";
-            } else if (!isset($_GET['filterByRating']) || $hotel['vote'] >= (int)$_GET['filterByRating'] && $hotel['parking'] == true) {
-                echo "
-                    <tr>
-                        <td>{$hotel['name']}</td>
-                        <td>{$hotel['description']}</td>
-                        <td>" . ($hotel['parking'] ? 'Yes' : 'No') . "</td>
-                        <td>{$hotel['vote']}/5</td>
-                        <td>{$hotel['distance_to_center']} Km</td>
-                    </tr>
-                    ";
-            } */
+            }
         }
 
         echo "
             </tbody>
         </table>
         ";
-
-        var_dump($parkingGetQueryExists);
-        var_dump($_GET);
 
         ?>
 
