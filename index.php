@@ -40,6 +40,8 @@ $hotels = [
 
 ];
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +95,7 @@ $hotels = [
         ";
 
         foreach ($hotels as $hotel) {
-            if (isset($_GET['filterByParking']) && $hotel['vote'] >= (int)$_GET['filterByRating']) {
+            if (isset($_GET['filterByParking']) && $hotel['parking'] == true && $hotel['vote'] >= (int)$_GET['filterByRating']) {
                 echo "
                     <tr>
                         <td>{$hotel['name']}</td>
@@ -103,16 +105,16 @@ $hotels = [
                         <td>{$hotel['distance_to_center']} Km</td>
                     </tr>
                     ";
-            } else if ($hotel['vote'] >= (int)$_GET['filterByRating']) {
+            } else if (!isset($_GET['filterByRating']) || $hotel['vote'] >= (int)$_GET['filterByRating'] && $hotel['parking'] == true) {
                 echo "
-                <tr>
-                    <td>{$hotel['name']}</td>
-                    <td>{$hotel['description']}</td>
-                    <td>" . ($hotel['parking'] ? 'Yes' : 'No') . "</td>
-                    <td>{$hotel['vote']}/5</td>
-                    <td>{$hotel['distance_to_center']} Km</td>
-                </tr>
-                ";
+                    <tr>
+                        <td>{$hotel['name']}</td>
+                        <td>{$hotel['description']}</td>
+                        <td>" . ($hotel['parking'] ? 'Yes' : 'No') . "</td>
+                        <td>{$hotel['vote']}/5</td>
+                        <td>{$hotel['distance_to_center']} Km</td>
+                    </tr>
+                    ";
             }
         }
 
